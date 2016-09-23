@@ -31,6 +31,10 @@ var bio = {
     $("#topContacts").append(formattedGithub);
     var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
     $("#topContacts").append(formattedTwitter);
+	$("#footerContacts").append(formattedMobile);
+	$("#footerContacts").append(formattedEmail);
+	$("#footerContacts").append(formattedGithub);
+	$("#footerContacts").append(formattedTwitter);
     var formattedBiopic = HTMLbioPic.replace("%data%", bio.biopic);
     $("#header").append(formattedBiopic);
     var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
@@ -71,8 +75,9 @@ var education = {
   "display": function() {
     $("#education").append(HTMLschoolStart);
     education.schools.forEach(function(school) {
-
+	 
       var formattedSchoolName = HTMLschoolName.replace("%data%", school.name);
+	  formattedSchoolName = formattedSchoolName.replace("#", school.url);
       var formattedDegree = HTMLschoolDegree.replace("%data%", school.degree);
       var formattedSchoolTitle = formattedSchoolName + formattedDegree;
       var formattedDates = HTMLschoolDates.replace("%data%", school.dates);
@@ -81,7 +86,7 @@ var education = {
       $(".education-entry:last").append(formattedSchoolTitle);
       $(".education-entry:last").append(formattedLocation);
       $(".education-entry:last").append(formattedDates);
-
+	  
       school.majors.forEach(function(major) {
         var formattedMajor = HTMLschoolMajor.replace("%data%", major);
         $(".education-entry:last").append(formattedMajor);
